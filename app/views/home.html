@@ -4,8 +4,8 @@
       <div class="title"><div>Herman Leonard Photography</div></div>
       <div class="menu">
         <div>
-          <div class="menu-spacer" ng-repeat="link in coverLinks">
-            <span ng-click="go('{{link.url}}')">{{link.title}}</span>
+          <div class="menu-spacer" ng-repeat="item in mainMenu">
+            <span ng-click="go('{{item.url}}')">{{item.title}}</span>
           </div>
         </div>
       </div>

@@ -9,27 +9,6 @@
  */
 angular.module('hlpApp')
   .controller('CoverCtrl', function ($scope) {
-    $scope.coverLinks = [
-      {
-        title: 'Images',
-        url: ''
-      },{
-        title: 'Exhibits',
-        url: ''
-      },{
-        title: 'News',
-        url: ''
-      },{
-        title: 'Books',
-        url: ''
-      },{
-        title: 'Bio',
-        url: ''
-      },{
-        title: 'Contact',
-        url: ''
-      }
-    ];
 
     $scope.go = function (url) {
     	document.location = url;
@@ -41,7 +20,7 @@ angular.module('hlpApp')
     $(window).resize(function(){
       w = $(window).width();
       h = $(window).height()-100;
-      $('.cover > .cover-spacer > div').width( w ).height( h );
+      $('.cover > .cover-spacer > div').width(w).height(h);
     });
 
   });

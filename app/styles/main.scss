@@ -25,140 +25,198 @@ body {
   padding: 0.2em 0;
 }
 
-/* Home */
-.cover {
-  & > .cover-spacer {
-    display: table;
+/* Header */
+  header {
+    z-index: 5000;
+    position: fixed;
     width: 100%;
+    padding: 20px;
     & > div {
-      padding: 50px;
-      display: table-cell;
-      vertical-align: middle;
-      background: {
-        image: url('/images/FRS03.jpg');
-        position: center;
-        size: cover;
-        repeat: no-repeat;
-      }
-      .title {
-        padding: 10px;
-        margin: auto;
-        max-width: 490px;
+      box-shadow: $drop-shadow-dark;
+      background-color: #222;
+      color: #CCC;
+      .header-logo {
+        padding-left: 10px;
         text-align: center;
-        border: 2px solid #FFF;
-        color: #FFF;
-        font-size: 38px
-      }
-      .menu {
-        height: 40px;
-        width: 100%;
-        & > div {
-          margin: 20px auto 0;
-          display: table;
-        }
-        .menu-spacer {
+        @include breakpoint(sm) {
           float: left;
-          margin: 0 20px;
-          font-size: 18px;
-          text-transform: uppercase;
-          color: #CCC;
-          &:hover {
-            cursor: pointer;
-            color: #FFF;
-          };
+          text-align: left;
+        }
+        font: {
+          family: 'Source Sans Pro', sans-serif;
+          size: 1.5em;
+          weight: 200;
+        }
+      }
+      .header-menu {
+
+        .navbar, .navbar-inverse {
+          border-radius: 0;
+          border: none;
+          margin-bottom: 0;
+        }
+
+        .nav li {
+          display: inline;
+          color: white;
+        }
+
+        .navbar-inverse .navbar-nav > li > a {
+          color: #ffffff;
+          font-size: 1.5em;
+          text-align: center;
+          font-weight: 300;
+          padding: 30px 25px 33px;
+        }
+
+        .navbar-inverse .navbar-nav li a:hover {
+          background-color: #444444;
+          transition: 0.7s all linear;
+          height: 100%;
+        }
+        .navbar-nav {
+          float: right;
+        }
+
+        .navbar-toggle {
+          border: none;
+          border-radius: 0;
+          margin-bottom: 4px;
+        }
+        .navbar-collapse {
+          border: none;
+          box-shadow: none;
+        }
+
+      }
+
+    }
+  }
+
+
+
+/* Home */
+  .cover {
+    & > .cover-spacer {
+      display: table;
+      width: 100%;
+      & > div {
+        padding: 50px;
+        display: table-cell;
+        vertical-align: middle;
+        background: {
+          image: url('/images/FRS03.jpg');
+          position: center;
+          size: cover;
+          repeat: no-repeat;
+        }
+        .title {
+          padding: 10px;
+          margin: auto;
+          max-width: 490px;
+          text-align: center;
+          border: 2px solid #FFF;
+          color: #FFF;
+          font-size: 38px
+        }
+        .menu {
+          height: 40px;
+          width: 100%;
+          & > div {
+            margin: 20px auto 0;
+            display: table;
+          }
+          .menu-spacer {
+            float: left;
+            margin: 0 20px;
+            font-size: 18px;
+            text-transform: uppercase;
+            color: #CCC;
+            &:hover {
+              cursor: pointer;
+              color: #FFF;
+            };
+          }
         }
       }
     }
   }
-}
 
-.bulletin {
-  padding: 20px;
-  margin: -160px 0 0;
-  & > div {
-    @include animation-panel(color, background-color, box-shadow);
-    color: #CCC;
+  .bulletin {
     padding: 20px;
-    background-color: #1E1E1E;
-    box-shadow: $drop-shadow-dark;
-    &:hover {
-      box-shadow: $drop-shadow-light;
-      color: #1E1E1E;
-      background-color: #FFF;
-    };
+    margin: -160px 0 0;
+    & > div {
+      @include animation-panel(color, background-color, box-shadow);
+      color: #CCC;
+      padding: 20px;
+      background-color: #1E1E1E;
+      box-shadow: $drop-shadow-dark;
+      &:hover {
+        box-shadow: $drop-shadow-light;
+        color: #1E1E1E;
+        background-color: #FFF;
+      };
+    }
+    .title {
+      display: table;
+      text-transform: uppercase;
+      font-size: 18px;
+      text-align: left;
+    }
+    .image {
+      display: table;
+      padding-top: 20px;
+    }
+    .short {
+      display: table;
+      font-size: 14px;
+      text-align: left;
+    }
   }
-  .title {
-    display: table;
-    text-transform: uppercase;
-    font-size: 18px;
-    text-align: left;
-  }
-  .image {
-    display: table;
-    padding-top: 20px;
-  }
-  .short {
-    display: table;
-    font-size: 14px;
-    text-align: left;
-  }
-}
 
 /* Photos */
-.photo-container {
-  padding: 15px;
-  @include breakpoint(md) { padding: 30px; }
-  .photo-thumb {
-    box-shadow: $drop-shadow-dark;
-    margin: 20px 0 30px;
-    @include breakpoint(md) { margin: 20px 10px; }
-    cursor: pointer;
-
-    .photo-image {
-      overflow: hidden;
-      
-      @include breakpoint(xs) { height: 300px; }
-      @include breakpoint(sm) { height: 480px; }
-      @include breakpoint(md) { height: 300px; }
-      @include breakpoint(lg) { height: 260px; }
-      
-      width: auto;
-      background: {
-        size: cover;
-        position: center;
-        repeat: no-repeat;
-      }
-    }
-    .photo-info {
-      @include animation-panel(color, background-color, box-shadow);
+  .photo-container {
+    padding: 15px;
+    @include breakpoint(md) { padding: 30px; }
+    .photo-thumb {
       box-shadow: $drop-shadow-dark;
-      width: auto;
-      height: 100px;
-      overflow: hidden;
-      background-color: #111;
-      color: #FFF;
-      text-align: center;
-      font-size: 14px;
-      padding: 20px;
-    }
-    &:hover {
+      margin: 20px 0 30px;
+      @include breakpoint(md) { margin: 20px 10px; }
+      cursor: pointer;
+
+      .photo-image {
+        overflow: hidden;
+        
+        @include breakpoint(xs) { height: 300px; }
+        @include breakpoint(sm) { height: 480px; }
+        @include breakpoint(md) { height: 300px; }
+        @include breakpoint(lg) { height: 260px; }
+        
+        width: auto;
+        background: {
+          size: cover;
+          position: center;
+          repeat: no-repeat;
+        }
+      }
       .photo-info {
-        box-shadow: $drop-shadow-light;
-        background-color: #FFF;
-        color: #111;
+        @include animation-panel(color, background-color, box-shadow);
+        box-shadow: $drop-shadow-dark;
+        width: auto;
+        height: 100px;
+        overflow: hidden;
+        background-color: #111;
+        color: #FFF;
+        text-align: center;
+        font-size: 14px;
+        padding: 20px;
+      }
+      &:hover {
+        .photo-info {
+          box-shadow: $drop-shadow-light;
+          background-color: #FFF;
+          color: #111;
+        }
       }
     }
   }
-}
-
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  .header,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
-  }
-  .header {
-    margin-bottom: 30px;
-  }
-}
