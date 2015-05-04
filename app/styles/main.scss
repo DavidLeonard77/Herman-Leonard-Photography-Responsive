@@ -1,0 +1,164 @@
+$icon-font-path: "../../bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
+$color-dark: #222;
+$drop-shadow-dark: 0 0px 5px #101010;
+$drop-shadow-light: 0 0px 5px #999;
+
+// bower:scss
+@import "bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
+// endbower
+
+@import "_mixins";
+
+body {
+  background-color: #383838;
+  font-family: 'Abel', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+/* Home */
+.cover {
+  & > .cover-spacer {
+    display: table;
+    width: 100%;
+    & > div {
+      padding: 50px;
+      display: table-cell;
+      vertical-align: middle;
+      background: {
+        image: url('/images/FRS03.jpg');
+        position: center;
+        size: cover;
+        repeat: no-repeat;
+      }
+      .title {
+        padding: 10px;
+        margin: auto;
+        max-width: 490px;
+        text-align: center;
+        border: 2px solid #FFF;
+        color: #FFF;
+        font-size: 38px
+      }
+      .menu {
+        height: 40px;
+        width: 100%;
+        & > div {
+          margin: 20px auto 0;
+          display: table;
+        }
+        .menu-spacer {
+          float: left;
+          margin: 0 20px;
+          font-size: 18px;
+          text-transform: uppercase;
+          color: #CCC;
+          &:hover {
+            cursor: pointer;
+            color: #FFF;
+          };
+        }
+      }
+    }
+  }
+}
+
+.bulletin {
+  padding: 20px;
+  margin: -160px 0 0;
+  & > div {
+    @include animation-panel(color, background-color, box-shadow);
+    color: #CCC;
+    padding: 20px;
+    background-color: #1E1E1E;
+    box-shadow: $drop-shadow-dark;
+    &:hover {
+      box-shadow: $drop-shadow-light;
+      color: #1E1E1E;
+      background-color: #FFF;
+    };
+  }
+  .title {
+    display: table;
+    text-transform: uppercase;
+    font-size: 18px;
+    text-align: left;
+  }
+  .image {
+    display: table;
+    padding-top: 20px;
+  }
+  .short {
+    display: table;
+    font-size: 14px;
+    text-align: left;
+  }
+}
+
+/* Photos */
+.photo-container {
+  padding: 15px;
+  @include breakpoint(md) { padding: 30px; }
+  .photo-thumb {
+    box-shadow: $drop-shadow-dark;
+    margin: 20px 0 30px;
+    @include breakpoint(md) { margin: 20px 10px; }
+    cursor: pointer;
+
+    .photo-image {
+      overflow: hidden;
+      
+      @include breakpoint(xs) { height: 300px; }
+      @include breakpoint(sm) { height: 480px; }
+      @include breakpoint(md) { height: 300px; }
+      @include breakpoint(lg) { height: 260px; }
+      
+      width: auto;
+      background: {
+        size: cover;
+        position: center;
+        repeat: no-repeat;
+      }
+    }
+    .photo-info {
+      @include animation-panel(color, background-color, box-shadow);
+      box-shadow: $drop-shadow-dark;
+      width: auto;
+      height: 100px;
+      overflow: hidden;
+      background-color: #111;
+      color: #FFF;
+      text-align: center;
+      font-size: 14px;
+      padding: 20px;
+    }
+    &:hover {
+      .photo-info {
+        box-shadow: $drop-shadow-light;
+        background-color: #FFF;
+        color: #111;
+      }
+    }
+  }
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  .header,
+  .footer {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .header {
+    margin-bottom: 30px;
+  }
+}

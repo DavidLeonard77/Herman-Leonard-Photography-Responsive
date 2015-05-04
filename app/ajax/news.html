@@ -1,0 +1,21 @@
+<?php
+  $entries = array();
+
+  {exp:channel:entries
+
+    channel = "news"
+    sort = "desc"
+    dynamic = "no"
+    disable = "pagination|category_fields|member_data"
+    status = "Home Page"
+
+  }
+
+    $entries[] = array('entry' => "{entry_id}", 'title' => "{title}", 'image' => "{bulletin_img}", 'short' => '{bulletin_txt}', 'url' => '{bulletin_link}');
+
+  {/exp:channel:entries}
+
+  header('Content-type: application/json');
+  echo json_encode($entries);
+  exit;
+?>

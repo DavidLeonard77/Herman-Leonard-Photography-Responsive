@@ -1,0 +1,27 @@
+<div class="cover" ng-controller="CoverCtrl">
+  <div class="cover-spacer">
+    <div>
+      <div class="title"><div>Herman Leonard Photography</div></div>
+      <div class="menu">
+        <div>
+          <div class="menu-spacer" ng-repeat="link in coverLinks">
+            <span ng-click="go('{{link.url}}')">{{link.title}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container" ng-controller="NewsCtrl">
+  <div class="news">
+    <div ng-repeat="bulletin in news.articles" post-cover-news-directive>
+      <div class="bulletin">
+        <div>
+          <div class="title">{{bulletin.title}}</div>
+          <div class="short" ng-show="">{{bulletin.short}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
