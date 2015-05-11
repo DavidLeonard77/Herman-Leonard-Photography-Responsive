@@ -36,3 +36,10 @@ $xl: 1200px;
                      transition-property: $properties;
               transition-timing-function: ease-out;
 }
+
+@mixin placeholder-text ($placeholderColor) {
+  input::-webkit-input-placeholder { color:$placeholderColor; }
+  input::-moz-placeholder { color:$placeholderColor; }
+  input:-moz-placeholder { color:$placeholderColor; }
+  input:-ms-input-placeholder { color:$placeholderColor; }
+}

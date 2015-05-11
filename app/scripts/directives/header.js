@@ -9,12 +9,12 @@
  */
 angular.module('hlpApp')
   .directive('header', function () {
-  	return {
-      	restrict: 'E',
-      	templateUrl: 'directives/header.html',
-  		controller: function($scope) {
+    return {
+      restrict: 'E',
+      templateUrl: 'directives/header.html',
+      controller: function($scope) {
 
-  		},
-  		controllerAs: 'headerCtrl'
-  	};
+      },
+      controllerAs: 'headerCtrl'
+    };
   });

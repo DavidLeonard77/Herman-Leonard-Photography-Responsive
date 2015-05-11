@@ -20,7 +20,7 @@ angular.module('hlpApp')
       'offset' : 20,
       'limit' : 20,
 
-      thumbnails : [],
+      photos : [],
 
       getParams : function () {
         return '/' + this.genre + '/' + this.group + '/' + this.viewall + '/' + this.name + '/' + this.status + '/' + this.offset + '/' + this.limit;
@@ -31,11 +31,17 @@ angular.module('hlpApp')
  // $.get('ajax/thumnails.json' + $scope.gallery.getParams(), function (data) {
     $.get('ajax/thumbnails.json', function (data) {
 
-      $scope.gallery.thumbnails = data;
+      $scope.gallery.photos = data;
       $scope.$apply();
 
       console.log($scope.gallery);
-      // $scope.$on('postGalleryThumbnailsDirective', function(scope, element, attrs){    
+
+      // Add some stuff to the image data
+      // for (var c=0; c<$scope.gallery.photos.length; c++) {
+      //   $scope.gallery.photos[c].thumbHover = true;
+      // }
+
+      // $scope.$on('postGalleryThumbnailsDirective', function(scope, element, attrs){
 
       //   // Post Angular ng-repeat bootstrap classes
       //   $('.news > div:nth-child(1)').addClass('col-xs-12 col-sm-6 col-md-4');
