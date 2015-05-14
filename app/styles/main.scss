@@ -10,7 +10,7 @@ $drop-shadow-light: 0 0px 5px #999;
 @import "_mixins";
 
 body {
-  background-color: #383838;
+  background-color: #292929;
   font-family: 'Abel', sans-serif;
 }
 
@@ -31,7 +31,7 @@ body {
     z-index: 5000;
     position: fixed;
     width: 100%;
-    padding: 20px;
+    /* padding: 20px; */
     & > div {
       box-shadow: $drop-shadow-dark;
       background-color: #222;
