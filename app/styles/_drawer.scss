@@ -1,0 +1,117 @@
+/* Menu */
+  %drawer {
+    position: fixed;
+    @include break(isMedium) {
+      position: relative;
+      -webkit-transform: translateX(0);
+      transform: translateX(0);
+    }
+    box-sizing: border-box;
+    top: 0;
+    right: 0;
+    width: 300px;
+    min-height: 100%;
+    background: $charcoal;
+    -webkit-transform: translateX(300px);
+    transform: translateX(300px);
+    transition: transform .4s ease-out;
+    &.active {
+      -webkit-transform: translateX(0);
+      transform: translateX(0);
+      &:before {
+        content: " ";
+        display: block;
+        background: rgba(0,0,0,0.4);
+        position: absolute;
+        height: 100%;
+        width: 100vw;
+        top: 0;
+        right: 100%;
+      }
+      a.toggler {
+        -webkit-transform: rotate(90deg);
+        transform: rotate(90deg);
+      }
+    }
+    a.toggler {
+      @include break(isMedium) {
+        display: none;
+      }
+      &:before {
+        display: inline-block;
+        vertical-align: middle;
+        content: " ";
+        background-image: url('data:image/svg+xml;utf8,<svg enable-background="new 0 0 34 24" height="24px" id="Layer_1" version="1.1" viewBox="0 0 34 24" width="34px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g><rect fill="#FFFFFF" height="6" width="34"/><rect fill="#FFFFFF" height="6" width="34" y="9"/><rect fill="#FFFFFF" height="6" width="34" y="18"/></g></svg>');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: contain;
+        margin-right: 0.25em;
+        width: 1.4em;
+        height: 2.2em;
+        margin-left: 0.4em;
+      }
+      position: absolute;
+      top: 1.7em;
+      left: -4em;
+      width: 2.5em;
+      height: 2.5em;
+      border: 2px solid $white;
+      transition: transform 0.4s ease-out;
+      white-space: nowrap;
+      display: inline-block;
+      /* the rest of the styles */
+    }
+
+
+    // Drawer Items
+    .header-logo {
+      color: $fog;
+      font-size: 42px;
+      padding: 15px 0 0 20px;
+      text-align: left;
+    }
+
+    .menu {
+      padding: 0 20px;
+      ul {
+        margin: 0;
+        padding: 0;
+        li {
+          display: block;
+          a {
+            color: $grey;
+          }
+        }
+      }
+    }
+
+    .menu-sub {
+      padding: 0 20px;
+      ul {
+        margin: 0;
+        padding: 0;
+        li {
+          display: block;
+          color: $grey;
+        }
+      }
+    }
+
+    .header-search {
+      margin: 0 auto;
+      display: table;
+
+      @include placeholder-text(#333);
+      input[type="search"] {
+        border: 0;
+        background: $midnight;
+        color: #999;
+        font-size: 18px;
+        padding: 4px 8px;
+        text-align: center;
+        @include break(isMedium) { text-align: right; }
+        width: 300px;
+        margin: 8px 0 0 0;
+      }
+    }
+}

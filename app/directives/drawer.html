@@ -1,0 +1,23 @@
+<a class="toggler" ng-click="toggleDrawer()"></a>
+
+<section class="header-logo"> Herman Leonard </section>
+
+<section class="menu">
+
+  <ul>
+    <li ng-repeat="item in menu"><a href="{{item.url}}">{{item.title}}</a></li>
+  </ul>
+
+</section>
+
+<section class="header-search"><input type="search" ng-model="search" placeholder="Search"></section>
+
+<section class="menu-sub">
+
+  <ul>
+    <li ng-repeat="photo in photos | filter : search">
+      {{photo.name}}
+    </li>
+  </ul>
+
+</section>

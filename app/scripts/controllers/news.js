@@ -1,12 +1,5 @@
 'use strict';
 
-/**
- * @ngdoc function
- * @name hlpApp.controller:MainCtrl
- * @description
- * # NewsCtrl
- * Controller of the hlpApp
- */
 angular.module('hlpApp')
   .controller('NewsCtrl', function ($scope) {
 
@@ -125,7 +118,7 @@ angular.module('hlpApp')
       $scope.news.articles = data;
       $scope.$apply();
 
-      $scope.$on('postCoverNewsDirective', function(scope, element, attrs){    
+      $scope.$on('postCoverNewsDirective', function(scope, element, attrs){
 
         // Post Angular ng-repeat bootstrap classes
         $('.news > div:nth-child(1)').addClass('col-xs-12 col-sm-6 col-md-4');

@@ -1,12 +1,5 @@
 'use strict';
 
-/**
- * @ngdoc function
- * @name hlpApp.controller:MainCtrl
- * @description
- * # CoverCtrl
- * Controller of the hlpApp
- */
 angular.module('hlpApp')
   .controller('CoverCtrl', function ($scope) {
 
