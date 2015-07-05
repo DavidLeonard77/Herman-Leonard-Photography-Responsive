@@ -2,36 +2,7 @@
 @import "bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
 // endbower
 
-@import "mixins";
 @import "theme";
-
-body {
-  background-color: $tar;
-  font-family: 'Abel', sans-serif;
-  -webkit-font-smoothing: subpixel-antialiased;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-.browsehappy {
-  margin: 0.2em 0;
-  background: $grey;
-  color: $black;
-  padding: 0.2em 0;
-}
-
-/* Layout */
-.layout {
-  display: flex;
-  &>*:first-child {
-    flex: 1;
-  }
-  &>*:last-child {
-    @extend %drawer;
-  }
-}
 
 @import "drawer";
 @import "home";

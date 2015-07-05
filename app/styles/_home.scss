@@ -14,12 +14,9 @@
           repeat: no-repeat;
         }
         .title {
-          padding: 10px;
+          @include box-outline-color($white);
           margin: auto;
           max-width: 490px;
-          text-align: center;
-          border: 2px solid #FFF;
-          color: #FFF;
           font-size: 38px
         }
         .menu {

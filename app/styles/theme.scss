@@ -1,13 +1,70 @@
 $icon-font-path: "../../bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
 
-$drop-shadow-dark: 0 0px 5px #101010;
-$drop-shadow-light: 0 0px 5px #999;
-
-$coal: #222;
-$charcoal: #333;
-$midnight: #111;
-$grey: #ccc;
-$fog: #999;
 $white: white;
 $black: black;
+$midnight: #111;
+$coal: #222;
 $tar: #292929;
+$charcoal: #333;
+$grey: #ccc;
+$fog: #999;
+
+$drop-shadow-dark: 0 0px 5px #101010;
+$drop-shadow-dark-large: 0 0px 25px #101010;
+$drop-shadow-light: 0 0px 5px #999;
+$drop-shadow-light-large: 0 0px 25px #999;
+
+$isTiny: 320px;
+$isSmall: 480px;
+$isMedium: 768px;
+$isLarge: 992px;
+$isJumbo: 1200px;
+
+@import "mixins";
+
+body {
+  background-color: $tar;
+  font-family: 'Abel', sans-serif;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.browsehappy {
+  margin: 0.2em 0;
+  background: $grey;
+  color: $black;
+  padding: 0.2em 0;
+}
+
+.box {
+  padding: 10px;
+  text-align: center;
+  &.box-hover:hover {
+    cursor: pointer;
+    @include animation-panel('background');
+  }
+}
+
+.box-solid {
+  color: $midnight;
+  background: $fog;
+  border: 2px solid transparent;
+  &.box-hover:hover {
+    color: $fog;
+    border: 2px solid $fog;
+    background: $midnight;
+  }
+}
+
+.box-outline {
+  border: 2px solid $fog;
+  color: $fog;
+  &.box-hover:hover {
+    border: 2px solid transparent;
+    color: $midnight;
+    background: $fog;
+  }
+}

@@ -1,6 +1,5 @@
 'use strict';
 
-
 angular.module('hlpApp')
   .controller('PhotosCtrl', function ($scope, $rootScope, DataService) {
 
@@ -29,6 +28,5 @@ angular.module('hlpApp')
       });
 
     });
-
 
   });

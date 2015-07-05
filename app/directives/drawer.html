@@ -1,23 +1,34 @@
-<a class="toggler" ng-click="toggleDrawer()"></a>
 
-<section class="header-logo"> Herman Leonard </section>
+<div class="drawer-container container-fluid">
 
-<section class="menu">
+    <div>
 
-  <ul>
-    <li ng-repeat="item in menu"><a ng-href="{{item.url}}">{{item.title}}</a></li>
-  </ul>
+      <div class="header-container">
+        <div class="header">
+          <div>Herman Leonard</div>
+        </div>
+        <div class="menu">
+          <div>
+            <div ng-repeat="item in menu" class="box box-outline box-hover">{{item.title}}</div>
+          </div>
+        </div>
+      </div>
 
-</section>
+      <div class="categpries" ng-repeat="photo in photos | filter : { 'category' : 'Celebrities' } | limitTo: 1">{{photo.name}}</div>
 
-<section class="header-search"><input type="search" ng-model="search" placeholder="Search"></section>
+      <div class="search">
+        <input type="search" ng-model="search" placeholder="Search">
+        <div class="results" ng-show="search">
+          <ul>
+            <li ng-repeat="photo in photos | filter : search">
+              {{photo.name}}
+            </li>
+          </ul>
+        </div>
+      </div>
 
-<section class="menu-sub">
+    </div>
 
-  <ul>
-    <li ng-repeat="photo in photos | filter : search">
-      {{photo.name}}
-    </li>
-  </ul>
+  <a class="toggler" ng-click="toggleDrawer()"></a>
 
-</section>
+</div>

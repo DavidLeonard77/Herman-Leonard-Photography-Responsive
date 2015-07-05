@@ -1,11 +1,11 @@
 <div class="cover" ng-controller="CoverCtrl">
   <div class="cover-spacer">
     <div>
-      <div class="title"><div>Herman Leonard Photography</div></div>
+      <div class="title box box-outline box-hover"><div>Herman Leonard Photography</div></div>
       <div class="menu">
         <div>
           <div class="menu-spacer" ng-repeat="item in mainMenu">
-            <span ng-click="go('{{item.url}}')">{{item.title}}</span>
+            <span class="box box-solid box-hover" ng-click="go('{{item.url}}')">{{item.title}}</span>
           </div>
         </div>
       </div>

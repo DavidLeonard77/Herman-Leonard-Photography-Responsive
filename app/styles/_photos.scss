@@ -1,10 +1,17 @@
+.photos {
+  .header {
+    font-size: 30px;
+    color: $fog;
+    margin: 60px 0 0;
+    text-align: center;
+  }
 
-/* Photos */
+  /* Photos */
   .photo-container {
     padding: 30px 30px 0;
-    margin: 100px 0 0 0;
+    margin: 40px 0 0 0;
 
-    & > div {
+    & > thumbnail {
       @include break(isTiny) { height: 420px; }
       @include break(isSmall) { height: 520px; }
       @include break(isMedium) { height: 460px; }
@@ -20,7 +27,7 @@
 
       margin: 0 auto;
       overflow: hidden;
-      background-color: #111;
+      background-color: $midnight;
       box-shadow: $drop-shadow-dark;
       cursor: pointer;
 
@@ -84,6 +91,7 @@
       &:hover {
         @include animation-panel(background-color);
         background-color: #FFF;
+        z-index: 400;
 
         .photo-info {
           @include animation-panel(width,height);
@@ -100,3 +108,4 @@
       }
     }
   }
+}

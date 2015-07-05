@@ -244,6 +244,28 @@ module.exports = function (grunt) {
       }
     },
 
+    // External libraries
+    // concat: {
+    //   options: {
+    //     separator: ';',
+    //   },
+    //   dist: {
+    //     files: {
+    //       '<%= yeoman.dist %>/scripts/x.js': ['vendors/dlmenu/*.js']
+    //     }
+    //   }
+    // },
+
+    // uglify: {
+    //   dist: {
+    //     files: {
+    //       '<%= yeoman.dist %>/scripts/x.js': [
+    //         '<%= yeoman.dist %>/scripts/x.js'
+    //       ]
+    //     }
+    //   }
+    // },
+
     // The following *-min tasks will produce minified files in the dist folder
     // By default, your `index.html`'s <!-- Usemin block --> will take care of
     // minification. These next options are pre-configured if you do not wish
@@ -256,18 +278,6 @@ module.exports = function (grunt) {
     //       ]
     //     }
     //   }
-    // },
-    // uglify: {
-    //   dist: {
-    //     files: {
-    //       '<%= yeoman.dist %>/scripts/scripts.js': [
-    //         '<%= yeoman.dist %>/scripts/scripts.js'
-    //       ]
-    //     }
-    //   }
-    // },
-    // concat: {
-    //   dist: {}
     // },
 
     imagemin: {
@@ -356,6 +366,16 @@ module.exports = function (grunt) {
           expand: true,
           cwd: '.',
           src: 'bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/*',
+          dest: '<%= yeoman.dist %>'
+        }, {
+          expand: true,
+          cwd: '.',
+          src: 'vendors/**',
+          dest: '<%= yeoman.dist %>'
+        }, {
+          expand: true,
+          cwd: '.',
+          src: 'fonts/**',
           dest: '<%= yeoman.dist %>'
         }]
       },

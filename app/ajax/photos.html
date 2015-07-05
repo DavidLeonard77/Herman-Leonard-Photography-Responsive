@@ -1,0 +1,57 @@
+
+{!-- <!-- {if logged_in}<script> gallery.allowed = true; </script>{/if} --> --}
+
+<?php
+  $entries = array();
+
+  // load the thumbnails based on genre, name, and availability - only show pagination values
+
+
+  // ajax/photos/2/14/391/Print/0/100
+
+  // Segment_1 = /gallery
+  // Segment_2 = /thumbnails
+
+  // Segment_3 = genre
+  // Segment_4 = view all
+  // Segment_5 = name
+  // Segment_6 = availability
+
+  // Segment_7 = startCount
+  // Segment_8 = endCount
+
+  {exp:channel:entries
+
+    channel = "image"
+    category = "{segment_5}"
+    status = "{segment_6}"
+    offset = "{segment_7}"
+    limit = "{segment_8}"
+    orderby = "title"
+    sort = "asc"
+    dynamic = "no"
+    disable = "pagination|category_fields|member_data"
+
+  }
+
+    $urls = (object) '{url_title}';
+
+    $urls -> {'full'} = '{image:full}';
+    $urls -> {'big'} = '{image:big}';
+    $urls -> {'medium'} = '{image:medium}';
+    $urls -> {'thumb'} = '{image:thumb}';
+
+    $entries[] = array("entry" => "{entry_id}",
+                       "title" => "{title}",
+                       "category" => "{categories show='{segment_5}' limit='1'}{category_name}{/categories}",
+                       "name" => "{categories show_group='{segment_3}' show='not {segment_4}' backspace='2'}{category_name}, {/categories}",
+                       "location" => "{categories show_group='{place}' backspace='2'}{category_name}, {/categories}{categories show_group='{when}' limit='1'}, {category_name}{/categories}",
+                       "image" => $urls,
+                       "status" => "{segment_6}");
+
+  {/exp:channel:entries}
+
+  header("Content-type: application/json");
+  echo json_encode($entries);
+  exit;
+?>

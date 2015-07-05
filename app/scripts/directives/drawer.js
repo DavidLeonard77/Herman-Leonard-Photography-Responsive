@@ -14,7 +14,7 @@ angular.module('hlpApp')
       },
       link: function(scope, element) {
 
-        DataService.fetchMenu().then(function(response){
+        DataService.fetchMainMenu().then(function(response){
           scope.menu = response.data;
         });
         $rootScope.$on('photos-saved', function(event){

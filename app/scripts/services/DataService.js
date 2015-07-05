@@ -6,12 +6,12 @@ angular.module('hlpApp')
 
     var fetchPhotos = function() {
       return $http({
-          url: 'ajax/thumbnails.json',
+          url: 'ajax/photos.json',
           method: 'GET'
         });
     };
 
-    var fetchMenu = function () {
+    var fetchMainMenu = function () {
       return $http({
           url: 'ajax/menu.json',
           method: 'GET'
@@ -35,7 +35,7 @@ angular.module('hlpApp')
       fetchPhotos: fetchPhotos,
       savePhotos: savePhotos,
       getPhotos: getPhotos,
-      fetchMenu: fetchMenu
+      fetchMainMenu: fetchMainMenu
     };
 
   });

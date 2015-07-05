@@ -11,6 +11,7 @@
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
+		<link rel="stylesheet" type="text/css" href="styles/component.css" />
     <!-- bower:css -->
     <!-- endbower -->
     <!-- endbuild -->
@@ -27,13 +28,13 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <div class="layout" ng-controller="MainCtrl">
+    <div ng-controller="MainCtrl">
       <main ng-view=""></main>
-      <drawer gallery="gallery"
-              menu="menu"
-              search="search"
-      ></drawer>
     </div>
+    <drawer gallery="gallery"
+            menu="menu"
+            search="search"
+    ></drawer>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
@@ -52,6 +53,7 @@
     <![endif]-->
 
     <!-- build:js(.) scripts/vendor.js -->
+
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
@@ -92,6 +94,10 @@
         <script src="scripts/directives/thumbnail.js"></script>
         <!-- Drawer -->
         <script src="scripts/directives/drawer.js"></script>
+        <script src="scripts/directives/dl-menu.js"></script>
     <!-- endbuild -->
+
+    <script src="vendors/dlmenu/modernizr.custom.js"></script>
+    <script src="vendors/dlmenu/jquery.dlmenu.js"></script>
 </body>
 </html>
