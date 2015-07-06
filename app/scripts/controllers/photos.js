@@ -3,30 +3,42 @@
 angular.module('hlpApp')
   .controller('PhotosCtrl', function ($scope, $rootScope, DataService) {
 
-    $scope.gallery = {
+    // Get galleries
+    DataService.fetchGalleries().then(function(response){
 
-      'genre' : 1,
-      'group' : 1,
-      'viewall' : 20,
-      'name' : 20,
-      'status' : 'Print',
-      'offset' : 20,
-      'limit' : 20,
-
-      photos : [],
-
-      getParams : function () {
-        return '/' + this.genre + '/' + this.group + '/' + this.viewall + '/' + this.name + '/' + this.status + '/' + this.offset + '/' + this.limit;
+      // Add photos array to each gallery
+      var g = response.data;
+      for (var i=0; i<g.length; i++) {
+        g[i].offset = 20;
+        g[i].limit = 20;
+        g[i].photos = [];
       }
 
-    };
+      // Save galleries back to DataService
+      DataService.saveGalleries( g ).then(function(){
 
-    DataService.fetchPhotos().then(function(response){
-      DataService.savePhotos(response.data).then(function(){
-        $scope.gallery.photos = DataService.getPhotos();
-        $rootScope.$broadcast('photos-saved');
+        // Now that it's saved let's mirror it in this scope
+        var c = DataService.getCurrentGallery();
+        $scope.gallery = DataService.getGallery( c );
+
+        // Get photos for current gallery view
+        DataService.fetchPhotos( c ).then(function( response ){
+
+            // .. do some stuff with photos data
+
+          // Save photos back to DataService
+          DataService.savePhotos( c, response.data ).then(function(){
+
+            // Now that it's saved let's mirror it in this scope
+            $scope.gallery.photos = DataService.getPhotos( c );
+            $rootScope.$broadcast('refresh-photos');
+
+          });
+
+        });
+
       });
-
     });
+
 
   });

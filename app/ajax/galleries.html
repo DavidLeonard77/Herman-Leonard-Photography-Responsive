@@ -1,0 +1,41 @@
+{!-- <!-- {if logged_in}<script> gallery.allowed = true; </script>{/if} --> --}
+
+<?php
+  $groups = array();
+
+  // get all the genres and associated id's ...
+  // to produce a link like this ...
+  // /gallery/genre_id/category_group_id/viewall_id/status
+
+  {exp:channel:categories
+
+  	channel="image"
+  	category_group="{genre}"
+  	style="linear"
+
+  }
+
+    $nameGroup;
+    $viewAll = '{category_description}';
+    $status = 'Print|Licensing';
+
+         if ( $viewAll == '{view_all_jazz}') { $nameGroup = '{jazz}'; $status = 'Print'; }
+    else if ( $viewAll == '{view_all_celebrities}') { $nameGroup = '{celebrities}'; }
+    else if ( $viewAll == '{view_all_reportage}') { $nameGroup = '{reportage}'; }
+    else if ( $viewAll == '{view_all_fashion_nudes}') { $nameGroup = '{fashion_nudes}'; }
+    else if ( $viewAll == '{view_all_new_orleans}') { $nameGroup = '{new_orleans}'; }
+    else if ( $viewAll == '{view_all_rock_pop_blues}') { $nameGroup = '{rock_pop_blues}'; }
+    else if ( $viewAll == '{view_all_new_images}') { $nameGroup = '{new_images}'; }
+
+    $groups[] = array("name"   => "{category_name}",
+                      "id"     => "{category_id}",
+                      "all"    => $viewAll,
+                      "group"  => $nameGroup,
+                      "status" => $status);
+
+  {/exp:channel:categories}
+
+  header("Content-type: application/json");
+  echo json_encode($groups);
+  exit;
+?>

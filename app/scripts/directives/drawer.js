@@ -6,19 +6,22 @@ angular.module('hlpApp')
       restrict: 'E',
       templateUrl: 'directives/drawer.html',
       scope: {
-        view: '=',
+
         menu: '=',
-        gallery: '=',
-        search: '=',
-        photos: '@'
+        galleries: '@',
+        currentGallery: '@',
+        search: '='
+        
       },
       link: function(scope, element) {
 
         DataService.fetchMainMenu().then(function(response){
           scope.menu = response.data;
         });
-        $rootScope.$on('photos-saved', function(event){
-          scope.photos = DataService.getPhotos();
+
+        $rootScope.$on('refresh-photos', function(){
+          scope.currentGallery = DataService.getCurrentGallery();
+          scope.galleries = DataService.getGalleries();
         });
 
         //console.log(scope.gallery.photos);

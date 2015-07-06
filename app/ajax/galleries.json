@@ -1,0 +1,43 @@
+[{
+  "name": "Jazz",
+  "id": "1",
+  "all": "20",
+  "group": "1",
+  "status": "Print"
+}, {
+  "name": "Celebrities",
+  "id": "2",
+  "all": "391",
+  "group": "14",
+  "status": "Print|Licensing"
+}, {
+  "name": "Reportage",
+  "id": "3",
+  "all": "390",
+  "group": "13",
+  "status": "Print|Licensing"
+}, {
+  "name": "Fashion & Nudes",
+  "id": "4",
+  "all": "388",
+  "group": "11",
+  "status": "Print|Licensing"
+}, {
+  "name": "New Orleans",
+  "id": "5",
+  "all": "389",
+  "group": "12",
+  "status": "Print|Licensing"
+}, {
+  "name": "Rock, Pop & Blues",
+  "id": "437",
+  "all": "435",
+  "group": "15",
+  "status": "Print|Licensing"
+}, {
+  "name": "New Images",
+  "id": "438",
+  "all": "436",
+  "group": "16",
+  "status": "Print|Licensing"
+}]

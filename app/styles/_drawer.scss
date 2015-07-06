@@ -33,6 +33,13 @@
               font-size: 32px;
               margin: -2px 0 0 5px;
               color: $fog;
+              &:first-child {
+                margin: -2px 20px 10px 5px;
+                text-align: center;
+                @include break(isMedium) {
+                  text-align: left;
+                }
+              }
             }
           }
           .menu {
@@ -53,8 +60,46 @@
           }
         }
 
+        .galleries-container {
+          margin: 8px 0 0 -2px;
+          &>div {
+            display: flex;
+            flex-flow: row wrap;
+            .galleries {
+              flex: 1 auto;
+              height: 120px;
+              margin: 8px 0 0 10px;
+
+              box-shadow: $drop-shadow-dark;
+              background: {
+                color: $charcoal;
+                size: cover;
+                position: center;
+                repeat: no-repeat;
+              }
+
+              &>div {
+                width: 100%;
+                height: 120px;
+                display: flex;
+                align-items: stretch;
+
+                &>div {
+                  flex: 1 auto;
+                  display: table-cell;
+                  vertical-align: center;
+                  text-align: center;
+                  font-size: 18px;
+                  color: $midnight;
+                }
+
+              }
+            }
+          }
+        }
+
         .search {
-          margin: 0 0 20px;
+          margin: 40px 0 20px;
           display: table;
           @include placeholder-text(#333);
           input[type="search"] {
@@ -110,7 +155,7 @@
         position: absolute;
         width: 2.5em;
         height: 2.5em;
-        margin: 48px 0 0 8px;
+        margin: 58px 0 0 8px;
         border: 2px solid $white;
         transition: transform 0.4s ease-out;
         white-space: nowrap;
@@ -146,14 +191,3 @@
       }
     }
   }
-
-  // Hide background overlay if active
-  // @include break(isLarge) {
-  //  drawer {
-  //    &.active {
-  //      &:before {
-  //        display: none;
-  //      }
-  //    }
-  //  }
-  //}
