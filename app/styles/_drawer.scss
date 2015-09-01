@@ -13,8 +13,8 @@
     z-index: 100;
 
     .drawer-container {
-      -webkit-transform: translateY(-448px);
-      transform: translateY(-448px);
+      -webkit-transform: translateY(-340px);
+      transform: translateY(-340px);
       transition: transform .4s ease-out;
       padding: 20px 20px 28px 20px;
       background: $midnight;
@@ -63,12 +63,29 @@
         .galleries-container {
           margin: 8px 0 0 -2px;
           &>div {
-            display: flex;
-            flex-flow: row wrap;
+            //display: flex;
+            //flex-flow: row wrap;
             .galleries {
-              flex: 1 auto;
+              //flex: 1 auto;
               height: 120px;
-              margin: 8px 0 0 10px;
+
+              // margin: 8px 0 0 10px;
+
+              float: left;
+
+              @include break(isMedium) {
+                width: 25%;
+                &:nth-child(4) {
+                  clear: left;
+                }
+              }
+
+              @include break(isSmall) {
+                width: 50%;
+                &:nth-child(3) {
+                  clear: left;
+                }
+              }
 
               box-shadow: $drop-shadow-dark;
               background: {

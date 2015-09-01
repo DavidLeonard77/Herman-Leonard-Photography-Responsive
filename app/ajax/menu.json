@@ -1,7 +1,7 @@
 [
   {
     "title": "images",
-    "url"  : "#/photos"
+    "url"  : "/galleries"
   },{
     "title": "exhibits",
     "url"  : ""

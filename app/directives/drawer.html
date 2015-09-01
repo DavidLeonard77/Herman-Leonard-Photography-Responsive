@@ -9,39 +9,41 @@
         </div>
         <div class="menu">
           <div>
-            <div ng-repeat="item in menu" class="box box-outline box-hover">{{item.title}}</div>
+            <div ng-repeat="item in menu"
+                 ng-click="go(item.url)"
+                 class="box box-outline box-hover">{{item.title}}</div>
           </div>
         </div>
       </div>
 
       <div class="galleries-container">
-        <div>
-
+        <div class="">
+            <!-- col col-xs-6 col-sm-4 col-md-3 col-lg-2 -->
             <div class="galleries"
-                 ng-repeat="gallery in galleries"
-                 style="background-image: url('{{gallery.photos[0].image.big}}');">
-
+                 ng-repeat="gallery in galleries">
               <div>
-                <div>{{gallery.name}}</div>
+                <div style="background-image: url('{{gallery.photos[0].image.big}}');">
+                  <div>{{gallery.name}}</div>
+                </div>
               </div>
-
-
 
             </div>
 
         </div>
       </div>
 
-<!--       <div class="search">
-  <input type="search" ng-model="search" placeholder="Search">
-  <div class="results" ng-show="search">
-    <ul>
-      <li ng-repeat="photo in galleries[ currentGallery ].photos | filter : search">
-        {{photo.name}}
-      </li>
-    </ul>
-  </div>
-</div> -->
+      <!--
+      <div class="search">
+        <input type="search" ng-model="search" placeholder="Search">
+        <div class="results" ng-show="search">
+          <ul>
+            <li ng-repeat="photo in galleries[ currentGallery ].photos | filter : search">
+              {{photo.name}}
+            </li>
+          </ul>
+        </div>
+      </div>
+      -->
 
     </div>
 

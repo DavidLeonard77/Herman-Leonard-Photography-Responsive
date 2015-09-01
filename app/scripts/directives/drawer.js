@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('hlpApp')
-  .directive('drawer', function ($rootScope, DataService) {
+  .directive('drawer', function ($rootScope, DataService, $location) {
     return {
       restrict: 'E',
       templateUrl: 'directives/drawer.html',
@@ -11,7 +11,7 @@ angular.module('hlpApp')
         galleries: '@',
         currentGallery: '@',
         search: '='
-        
+
       },
       link: function(scope, element) {
 
@@ -33,6 +33,10 @@ angular.module('hlpApp')
           } else {
             element.removeClass('active');
           }
+        };
+
+        scope.go = function (url) {
+          $location.path(url);
         };
 
       }

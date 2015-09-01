@@ -22,9 +22,9 @@ angular.module('hlpApp')
     var galleries = [];
     var fetchGalleries = function () {
       return $http({
-          url: 'ajax/galleries.json',
-          method: 'GET'
-        });
+        url: 'ajax/galleries.json',
+        method: 'GET'
+      });
     };
     var saveGalleries = function ( data ) {
       var deferred = $q.defer();
@@ -33,7 +33,17 @@ angular.module('hlpApp')
       return deferred.promise;
     };
     var getGalleries = function () {
-      return galleries;
+      var deferred = $q.defer();
+      if (galleries.length) {
+        deferred.resolve(galleries);
+      } else {
+        fetchGalleries().then(function(d){
+          saveGalleries(d.data).then(function(){
+            deferred.resolve(galleries);
+          });
+        });
+      }
+      return deferred.promise;
     };
     var getGallery = function ( g ) {
       return galleries[g];
@@ -62,7 +72,47 @@ angular.module('hlpApp')
       return deferred.promise;
     };
     var getPhotos = function ( g ) {
-      return galleries[g].photos;
+      var deferred = $q.defer();
+      function getG () {
+        if (
+          galleries[g].photos &&
+          galleries[g].photos.length
+        ) {
+          deferred.resolve(galleries[g].photos);
+        } else {
+          fetchPhotos(g).then(function(d){
+            savePhotos(g,d.data).then(function(){
+              deferred.resolve(galleries[g].photos);
+            });
+          });
+        }
+      }
+
+      if (galleries.length) {
+        getG();
+      } else {
+        getGalleries().then(function(){
+          getG();
+        });
+      }
+
+      return deferred.promise;
+    };
+
+    var getPhoto = function ( g , p ) {
+      var deferred = $q.defer();
+      if (
+        galleries.length &&
+        galleries[g].photos.length &&
+        galleries[g].photos[p]
+      ) {
+        deferred.resolve(galleries[g].photos[p]);
+      } else {
+        getPhotos(g).then(function(){
+          deferred.resolve(galleries[g].photos[p]);
+        });
+      }
+      return deferred.promise;
     };
 
     // public api
@@ -71,13 +121,15 @@ angular.module('hlpApp')
       getCurrentGallery: getCurrentGallery,
 
       fetchGalleries: fetchGalleries,
-      saveGalleries: saveGalleries,
+      savehGalleries: saveGalleries,
       getGalleries: getGalleries,
       getGallery: getGallery,
 
       fetchPhotos: fetchPhotos,
       savePhotos: savePhotos,
       getPhotos: getPhotos,
+      getPhoto: getPhoto,
+
       fetchMainMenu: fetchMainMenu
     };
 

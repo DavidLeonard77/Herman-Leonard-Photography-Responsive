@@ -1,43 +1,46 @@
 'use strict';
 
 angular.module('hlpApp')
-  .controller('PhotosCtrl', function ($scope, $rootScope, DataService) {
+  .controller('PhotosCtrl', function (
+    $scope, $rootScope, $route, DataService
+  ) {
+
+    console.log($route.current.params);
 
     // Get galleries
-    DataService.fetchGalleries().then(function(response){
+    DataService.getGalleries().then(function(response){
 
       // Add photos array to each gallery
-      var g = response.data;
-      for (var i=0; i<g.length; i++) {
+      var g = response;
+      angular.forEach(g, function(gallery,i){
         g[i].offset = 20;
         g[i].limit = 20;
         g[i].photos = [];
+      });
+
+      if ($route.current.params.gallery){
+        DataService.saveCurrentGallery($route.current.params.gallery);
       }
+      var c = DataService.getCurrentGallery();
 
-      // Save galleries back to DataService
-      DataService.saveGalleries( g ).then(function(){
+      // Get photos for current gallery view
+      DataService.getPhotos( c ).then(function( photos ){
 
-        // Now that it's saved let's mirror it in this scope
-        var c = DataService.getCurrentGallery();
-        $scope.gallery = DataService.getGallery( c );
+        // .. do some stuff with photos data
 
-        // Get photos for current gallery view
-        DataService.fetchPhotos( c ).then(function( response ){
+        // Save photos back to DataService
+        DataService.savePhotos( c, photos ).then(function(){
 
-            // .. do some stuff with photos data
-
-          // Save photos back to DataService
-          DataService.savePhotos( c, response.data ).then(function(){
-
-            // Now that it's saved let's mirror it in this scope
-            $scope.gallery.photos = DataService.getPhotos( c );
+          // Now that it's saved let's mirror it in this scope
+          DataService.getPhotos( c ).then(function( p ){
+            $scope.gallery.photos = p;
             $rootScope.$broadcast('refresh-photos');
-
           });
 
         });
 
       });
+
     });
 
 
